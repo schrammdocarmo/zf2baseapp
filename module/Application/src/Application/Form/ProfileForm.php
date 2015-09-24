@@ -58,6 +58,14 @@ class ProfileForm extends Form {
         ));
 
         $this->add(array(
+            'name' => 'password',
+            'type' => 'password',
+            'options' => array(
+                'label' => $this->translate('Password'),
+            )
+        ));
+
+        $this->add(array(
             'name' => 'company',
             'type' => 'text',
             'options' => array(

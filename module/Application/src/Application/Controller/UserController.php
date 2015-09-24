@@ -19,6 +19,8 @@ use Zend\Mime\Part as MimePart;
 use Zend\Console\Request as ConsoleRequest;
 use RuntimeException;
 
+use Zend\Crypt\Password\Bcrypt;
+
 /**
   * User login, registration, reset/forgot password handling
   *
@@ -73,7 +75,11 @@ class UserController extends AbstractActionController
                         $user->setFirstName($this->getRequest()->getPost('first_name'));    
                         $user->setLastName($this->getRequest()->getPost('last_name'));    
                         $user->setEmail($this->getRequest()->getPost('email'));    
-                        $user->setPassword(md5($this->getRequest()->getPost('password')));    
+
+			$bcrypt = new Bcrypt();
+			$securePass = $bcrypt->create($this->getRequest()->getPost('password'));
+                        $user->setPassword($securePass);
+
                         $user->setStatus(0);
 			$token = md5(uniqid(mt_rand(), true));
                         $user->setToken($token);
@@ -174,7 +180,18 @@ class UserController extends AbstractActionController
 			$adapter = $authService->getAdapter();
 			
 			$adapter->setIdentityValue($postData['email']);
-			$adapter->setCredentialValue(md5($postData['password']));
+
+			$currentUser = $this->getObjectManager()->getRepository('Application\Entity\User')->findOneBy(array('email' => $postData['email']));
+
+			$bcrypt = new Bcrypt();
+			if ($bcrypt->verify($postData['password'], $currentUser->getPassword())) {
+				$adapter->setCredentialValue($currentUser->getPassword());
+			} else {
+				//Just not to throw an exception
+				$adapter->setCredentialValue($postData['password']);
+			}
+
+			unset($currentUser);
 
 			$result = $adapter->authenticate();
 			if ($result->isValid()) {
@@ -333,7 +350,10 @@ class UserController extends AbstractActionController
                         $userObj = $this->getObjectManager()->getRepository('Application\Entity\User')->findOneBy(array('email' => $postData['email'], 'token' => $user->token));
                         if (is_object($userObj)) {
 
-				$userObj->setPassword(md5($postData['password']));
+	                        $bcrypt = new Bcrypt();
+        	                $securePass = $bcrypt->create($postData['password']);
+				$userObj->setPassword($securePass);
+
 	                        $userObj->setLastModified(new \DateTime("now"));
 	                        $this->getObjectManager()->persist($userObj);
         	                $this->getObjectManager()->flush();
@@ -344,9 +364,9 @@ class UserController extends AbstractActionController
 
 				$authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
                         	$adapter = $authService->getAdapter();
-                        
+
 	                        $adapter->setIdentityValue($postData['email']);
-        	                $adapter->setCredentialValue(md5($postData['password']));
+        	                $adapter->setCredentialValue($securePass);
 
 	                        $result = $adapter->authenticate();
         	                if ($result->isValid()) {

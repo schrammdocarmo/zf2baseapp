@@ -46,6 +46,25 @@ class ProfileFilter extends InputFilter {
                 array('name' => 'StringTrim'),
             ),
         ));
+
+        $this->add(array(
+            'name' => 'password',
+            'required' => true,
+            'filters' => array(
+                array('name' => 'StripTags'),
+                array('name' => 'StringTrim'),
+            ),
+            'validators' => array(
+                array(
+                    'name' => 'StringLength',
+                    'options' => array(
+                        'encoding' => 'UTF-8',
+                        'min' => 5,
+                        'max' => 32,
+                    ),
+                ),
+            )
+        ));
  
         $this->add(array(
             'name' => 'address',

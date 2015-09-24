@@ -8,6 +8,8 @@ use Zend\Session\Container;
 use Application\Form;
 use Application\Entity\Activity;
 
+use Zend\Crypt\Password\Bcrypt;
+
 /**
   * User Profile
   *
@@ -60,6 +62,10 @@ class ProfileController extends AbstractActionController
                         $currentUser->setCountry($request->getPost('country'));
                         $currentUser->setPhone($request->getPost('phone'));
                         $currentUser->setLastModified(new \DateTime("now"));
+
+			$bcrypt = new Bcrypt();
+                        $securePass = $bcrypt->create($request->getPost('password'));
+			$currentUser->setPassword($securePass);
 
 			$user->identity = $currentUser;
 
