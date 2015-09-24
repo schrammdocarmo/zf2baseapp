@@ -1,0 +1,17 @@
+<h1><?php echo $this->translate('Edit News'); ?></h1>
+<hr/>
+<br/>
+
+<div class="container">
+
+<?php
+if ($this->form) {
+$form = $this->form;
+$form->setAttribute('action', $this->url('news_edit'))->prepare();
+echo $this->form()->openTag($form);
+echo $this->form()->render($form);
+echo $this->form()->closeTag($form);
+}
+?>
+
+</div>

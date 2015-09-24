@@ -1,0 +1,214 @@
+body {
+    padding-top:40px;
+}
+
+.btn-success {
+  background-color: #57a900;
+  background-image: -moz-linear-gradient(top, #70d900, #57a900);
+  background-image: -ms-linear-gradient(top, #70d900, #57a900);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#70d900), to(#57a900));
+  background-image: -webkit-linear-gradient(top, #70d900, #57a900);
+  background-image: -o-linear-gradient(top, #70d900, #57a900);
+  background-image: linear-gradient(top, #70d900, #57a900);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70d900', endColorstr='#57a900', GradientType=0);
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+  background-color: #57a900;
+}
+
+.btn-success:active, .btn-success.active {
+  background-color: #57a900;
+}
+
+div.container a.brand {
+    margin-left: 0;
+    padding: 8px 20px 12px 40px;
+}
+
+@media (max-width: 979px) {
+      .container.navbar-wrapper {
+        margin-bottom: 0;
+        width: auto;
+      }
+      .navbar-inner {
+        border-radius: 0;
+        margin: -20px 0;
+      }
+}
+
+@media (max-width: 767px) {
+      .navbar-inner {
+        margin: -20px;
+      }
+}
+
+body {
+/*font-family: 'Alegreya Sans', sans-serif;*/
+font-family: 'Lato', sans-serif;
+font-weight:300;
+}
+
+form {
+width:100%;
+height:auto;
+float:left;
+clear:both;
+}
+form input[type=submit] {
+float:left;
+clear:both;
+}
+.btn-news {
+float:left !important;
+clear:both !important;
+}
+.sbmt-news {
+float:left !important;
+clear:none !important;
+margin-left:15px !important;
+}
+form label, form span {
+float:left;
+clear:both;
+}
+form label span {
+padding:5px 10px 5px 0px;
+}
+form label input, form label textarea, form label img, form label select, form fieldset, form fieldset input, form fieldset img {
+float:left;
+clear:both;
+}
+form input[type=submit], form input[type=button] {
+margin-top:15px;
+margin-bottom:30px;
+}
+form fieldset legend {
+font-size:15px !important;
+font-weight:bold !important;
+}
+form input[type=text], form input[type=password], form textarea, form select {
+width:320px;
+}
+form select {
+height:25px !important;
+vertical-align:top;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+border:1px solid #cccccc;
+}
+form textarea {
+height:160px;
+}
+#logo {
+height:46px;
+position:relative;
+left:-15px;
+margin-right:5px;
+}
+td {
+vertical-align:middle !important;
+}
+.form-error {
+   border-top-right-radius: 5px;
+   border-top-left-radius: 5px;
+   border-bottom-right-radius: 5px;
+   border-bottom-left-radius: 5px;
+   padding: 8px;
+   float:left;
+   clear:both;
+}
+
+.navbar-inverse {
+background-image: linear-gradient(to bottom,#3c434a 0,#6e7378 100%);
+}
+
+a.navbar-brand, .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+background: transparent !important;
+color:white !important;
+font-weight:bold !important;
+font-size:1.1em;
+text-decoration:none;
+}
+.navbar-inverse .navbar-nav>li>a {
+background: transparent !important;
+color:white !important;
+text-decoration:none;
+font-weight: 400;
+font-size:1.1em;
+}
+
+a.navbar-brand, a.navbar-brand:hover, a.navbar-brand:focus {
+color: white !important;
+font-family: 'Rochester', cursive;
+font-weight: 400;
+font-size:28px;
+text-decoration:none;
+}
+
+.navbar-inverse .navbar-nav>.active>a span, .navbar-inverse .navbar-nav>.active>a:hover span, .navbar-inverse .navbar-nav>.active>a:focus span, .navbar-inverse .navbar-nav>li>a span {
+position:relative;
+bottom:-5px;
+margin-right:6px;
+}
+
+.navbar-inverse .navbar-nav a:hover {
+border-bottom:5px solid white;
+}
+.navbar-inverse .navbar-nav>.active>a {
+border-bottom:5px solid #383a3c;
+box-shadow: none !important;
+}
+
+.navbar-inverse .navbar-nav a span.glyphicon {
+color:#f2f2f2;
+}
+
+.navbar {
+border-top:none !importamt;
+border-bottom:none !important;
+}
+footer {
+margin-top:60px;
+position:relative;
+top:60px;
+text-align:center;
+}
+
+h1,h2,h3,h4 {
+font-weight:300;
+}
+
+a {
+color:#35230e !important;
+text-decoration:underline;
+}
+a:hover, a:focus {
+color:#ffad00 !important;
+text-decoration:none;
+}
+
+#regions_map svg {
+margin-left:-165px;
+}
+
+#regions_map {
+width:550px;
+height:550px;
+overflow:hidden !important;
+border:1px solid #2d2d2d;
+}
+@media (max-width: 979px) {
+}
+@media (max-width: 767px) {
+border:1px solid red !important;
+}
+
+#currentRegion {
+color:#cc0000;
+}

@@ -1,0 +1,33 @@
+<h1><?php echo $this->translate('News'); ?></h1>
+<hr/>
+<br/>
+
+<div class="container">
+
+<?php foreach ($this->news as $entry) { ?>
+
+<div class="row">
+  <h4><?php echo $entry->getTitle(); ?></h4>
+  <p><?php echo $entry->getText(); ?></p>
+  <p>
+   <em><?php echo $this->translate('Published'); ?> <?php echo $entry->getCreated()->format('d.m.Y H:i'); ?></em>
+   <?php if ($this->userIsLogged()) { ?>
+   &nbsp;&nbsp;|&nbsp;&nbsp;
+   <a href="<?php echo $this->url('news_edit'); ?>?id=<?php echo $entry->getId(); ?>"><?php echo $this->translate('Edit'); ?></a>
+   &nbsp;&nbsp;|&nbsp;&nbsp;
+   <a href="<?php echo $this->url('news_delete'); ?>?id=<?php echo $entry->getId(); ?>"><?php echo $this->translate('Delete'); ?></a>
+   <?php } ?>
+  </p>
+  <hr/>
+</div>
+
+
+<?php } ?>
+
+<?php if ($this->userIsLogged()) { ?>
+<br/><br/>
+<a href="<?php echo $this->url('news_add'); ?>"><?php echo $this->translate('Add News'); ?></a>
+<?php } ?>
+
+<br/><br/>
+</div>

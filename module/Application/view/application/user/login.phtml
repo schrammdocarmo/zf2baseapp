@@ -1,0 +1,20 @@
+<h1><?php echo $this->translate('User login'); ?></h1>
+<hr/>
+<br/>
+
+<div class="container">
+
+<?php
+if ($this->form) {
+$form = $this->form;
+$form->setAttribute('action', $this->url('login'))->prepare();
+echo $this->form()->openTag($form);
+echo $this->form()->render($form);
+echo $this->form()->closeTag($form);
+}
+?>
+<br/><br/>
+<a href="<?php echo $this->url('forgotpwd'); ?>"><?php echo $this->translate('If you forgot your password, click here'); ?></a>
+<br/><br/>
+
+</div>
