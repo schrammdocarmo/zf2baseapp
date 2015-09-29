@@ -11,22 +11,7 @@ use Zend\Captcha\Image as CaptchaImage;
   *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   */
-class ResetpwdForm extends Form {
-
-    protected $_translator = null;
-
-    private function translate($label) {
-        if ($this->_translator==null) return;
-        return $this->_translator->translate($label);
-    }
-
-    public function __construct($params = null)
-    {
-        if (is_array($params) && isset($params['translator'])) {
-                $this->_translator = $params['translator'];
-        }
-        parent::__construct('resetpwdform');
-    }
+class ResetpwdForm extends BaseForm {
 
     public function init() {
 

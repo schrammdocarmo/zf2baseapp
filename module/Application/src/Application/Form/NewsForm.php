@@ -9,24 +9,9 @@ use Zend\Form\Form;
   *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   */
-class NewsForm extends Form {
+class NewsForm extends BaseForm {
 
-    protected $_translator = null;
 
-    private function translate($label) {
-        if ($this->_translator==null) return;
-        return $this->_translator->translate($label);
-    }
-
-    public function __construct($params = null)
-    {
-        if (is_array($params) && isset($params['translator'])) {
-                $this->_translator = $params['translator'];
-        }
-
-        parent::__construct('newsform');
-    }
- 
     public function init() {
 
         $this->setName('Contact');

@@ -114,31 +114,31 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
        return array(
         'factories' => array(
             'contactForm' => function($sm) {
-                $form = new Form\ContactForm('contactform', $sm->getServiceLocator()->get('translator'), null, array());
+                $form = new Form\ContactForm('contactform', $sm->getServiceLocator()->get('translator'), $sm->getServiceLocator()->get('Doctrine\ORM\EntityManager'), array());
                 $form->setInputFilter(new Form\ContactFilter);
                 $form->setHydrator(new \Zend\Stdlib\Hydrator\ObjectProperty());
                 return $form;
             },
             'registerForm' => function($sm) {
-                $form = new Form\RegisterForm('registerform', $sm->getServiceLocator()->get('translator'), null, array());
+                $form = new Form\RegisterForm('registerform', $sm->getServiceLocator()->get('translator'), $sm->getServiceLocator()->get('Doctrine\ORM\EntityManager'), array());
                 //$form->setInputFilter(new Form\RegisterFilter); //set in Controller as using Doctrine2
                 $form->setHydrator(new \Zend\Stdlib\Hydrator\ObjectProperty());
                 return $form;
             },
             'forgotpwdForm' => function($sm) {
-                $form = new Form\ForgotpwdForm('forgotpwdform', $sm->getServiceLocator()->get('translator'), null, array());
+                $form = new Form\ForgotpwdForm('forgotpwdform', $sm->getServiceLocator()->get('translator'), $sm->getServiceLocator()->get('Doctrine\ORM\EntityManager'), array());
                 //$form->setInputFilter(new Form\ForgotpwdFilter); //set in Controller as using Doctrine2
                 $form->setHydrator(new \Zend\Stdlib\Hydrator\ObjectProperty());
                 return $form;
             },
             'resetpwdForm' => function($sm) {
-                $form = new Form\ResetpwdForm('resetpwdform', $sm->getServiceLocator()->get('translator'), null, array());
+                $form = new Form\ResetpwdForm('resetpwdform', $sm->getServiceLocator()->get('translator'), $sm->getServiceLocator()->get('Doctrine\ORM\EntityManager'), array());
                 //$form->setInputFilter(new Form\ResetpwdFilter); //set in Controller as using Doctrine2
                 $form->setHydrator(new \Zend\Stdlib\Hydrator\ObjectProperty());
                 return $form;
             },
             'loginForm' => function($sm) {
-                $form = new Form\LoginForm('loginform', $sm->getServiceLocator()->get('translator'), null, array());
+                $form = new Form\LoginForm('loginform', $sm->getServiceLocator()->get('translator'), $sm->getServiceLocator()->get('Doctrine\ORM\EntityManager'), array());
                 $form->setInputFilter(new Form\LoginFilter);
                 $form->setHydrator(new \Zend\Stdlib\Hydrator\ObjectProperty());
                 return $form;
