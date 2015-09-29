@@ -15,20 +15,8 @@ use Zend\Crypt\Password\Bcrypt;
   *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   */
-class ProfileController extends AbstractActionController
+class ProfileController extends BaseController
 {
-
-
-    protected $_objectManager;
-
-    protected function getObjectManager()
-    {
-        if (!$this->_objectManager) {
-            $this->_objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        }
-
-        return $this->_objectManager;
-    }
 
    /**
     * Edit user Profile 

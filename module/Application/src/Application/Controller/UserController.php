@@ -26,19 +26,8 @@ use Zend\Crypt\Password\Bcrypt;
   *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   */
-class UserController extends AbstractActionController
+class UserController extends BaseController
 {
-
-    protected $_objectManager;
-
-    protected function getObjectManager()
-    {
-        if (!$this->_objectManager) {
-            $this->_objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        }
-
-        return $this->_objectManager;
-    }
 
    /**
     * Redirecting default index to login page

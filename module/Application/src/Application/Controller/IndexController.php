@@ -9,21 +9,9 @@ use Zend\View\Model\ViewModel;
   *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   */
-class IndexController extends AbstractActionController
+//class IndexController extends AbstractActionController
+class IndexController extends BaseController
 {
-
-
-    protected $_objectManager;
-
-
-    protected function getObjectManager()
-    {
-        if (!$this->_objectManager) {
-            $this->_objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        }
-
-        return $this->_objectManager;
-    }
 
     /**
       * Show index page

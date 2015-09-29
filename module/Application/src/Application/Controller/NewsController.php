@@ -14,21 +14,8 @@ use Application\Entity\Activity;
   *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   */
-class NewsController extends AbstractActionController
+class NewsController extends BaseController
 {
-
-
-    protected $_objectManager;
-
-
-    protected function getObjectManager()
-    {
-        if (!$this->_objectManager) {
-            $this->_objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        }
-
-        return $this->_objectManager;
-    }
 
    /**
     * News listing

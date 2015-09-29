@@ -21,20 +21,9 @@ use Zend\Mime\Part as MimePart;
   *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   */
-class ContactController extends AbstractActionController
+class ContactController extends BaseController
 {
 
-
-    protected $_objectManager;
-
-    protected function getObjectManager()
-    {
-        if (!$this->_objectManager) {
-            $this->_objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        }
-
-        return $this->_objectManager;
-    }
 
    /**
     * Contact form

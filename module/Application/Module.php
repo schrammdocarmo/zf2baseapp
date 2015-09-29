@@ -74,54 +74,83 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
         );
     }
 
+
+    public function getControllerConfig()
+    {
+  	return array(
+    	 'factories' => array(
+      		'Application\Controller\Index' => function ($sm) {
+          				$locator = $sm->getServiceLocator();
+				        $controller = new \Application\Controller\IndexController($locator->get('Doctrine\ORM\EntityManager'));
+				        return $controller;
+        	},
+      		'Application\Controller\Contact' => function ($sm) {
+          				$locator = $sm->getServiceLocator();
+				        $controller = new \Application\Controller\ContactController($locator->get('Doctrine\ORM\EntityManager'));
+				        return $controller;
+        	},
+      		'Application\Controller\User' => function ($sm) {
+          				$locator = $sm->getServiceLocator();
+				        $controller = new \Application\Controller\UserController($locator->get('Doctrine\ORM\EntityManager'));
+				        return $controller;
+        	},
+      		'Application\Controller\Profile' => function ($sm) {
+          				$locator = $sm->getServiceLocator();
+				        $controller = new \Application\Controller\ProfileController($locator->get('Doctrine\ORM\EntityManager'));
+				        return $controller;
+        	},
+      		'Application\Controller\News' => function ($sm) {
+          				$locator = $sm->getServiceLocator();
+				        $controller = new \Application\Controller\NewsController($locator->get('Doctrine\ORM\EntityManager'));
+				        return $controller;
+        	},
+
+      	 ),
+    	);
+    }
+
+
     public function getFormElementConfig() {
        return array(
         'factories' => array(
             'contactForm' => function($sm) {
-		$params = array('translator' => $sm->getServiceLocator()->get('translator'));
-                $form = new Form\ContactForm($params);
+                $form = new Form\ContactForm('contactform', $sm->getServiceLocator()->get('translator'), null, array());
                 $form->setInputFilter(new Form\ContactFilter);
                 $form->setHydrator(new \Zend\Stdlib\Hydrator\ObjectProperty());
                 return $form;
             },
             'registerForm' => function($sm) {
-		$params = array('translator' => $sm->getServiceLocator()->get('translator'));
-                $form = new Form\RegisterForm($params);
+                $form = new Form\RegisterForm('registerform', $sm->getServiceLocator()->get('translator'), null, array());
                 //$form->setInputFilter(new Form\RegisterFilter); //set in Controller as using Doctrine2
                 $form->setHydrator(new \Zend\Stdlib\Hydrator\ObjectProperty());
                 return $form;
             },
             'forgotpwdForm' => function($sm) {
-		$params = array('translator' => $sm->getServiceLocator()->get('translator'));
-                $form = new Form\ForgotpwdForm($params);
+                $form = new Form\ForgotpwdForm('forgotpwdform', $sm->getServiceLocator()->get('translator'), null, array());
                 //$form->setInputFilter(new Form\ForgotpwdFilter); //set in Controller as using Doctrine2
                 $form->setHydrator(new \Zend\Stdlib\Hydrator\ObjectProperty());
                 return $form;
             },
             'resetpwdForm' => function($sm) {
-		$params = array('translator' => $sm->getServiceLocator()->get('translator'));
-                $form = new Form\ResetpwdForm($params);
+                $form = new Form\ResetpwdForm('resetpwdform', $sm->getServiceLocator()->get('translator'), null, array());
                 //$form->setInputFilter(new Form\ResetpwdFilter); //set in Controller as using Doctrine2
                 $form->setHydrator(new \Zend\Stdlib\Hydrator\ObjectProperty());
                 return $form;
             },
             'loginForm' => function($sm) {
-		$params = array('translator' => $sm->getServiceLocator()->get('translator'));
-                $form = new Form\LoginForm($params);
+                $form = new Form\LoginForm('loginform', $sm->getServiceLocator()->get('translator'), null, array());
                 $form->setInputFilter(new Form\LoginFilter);
                 $form->setHydrator(new \Zend\Stdlib\Hydrator\ObjectProperty());
                 return $form;
             },
             'profileForm' => function($sm) {
-		$params = array('translator' => $sm->getServiceLocator()->get('translator'), 'em' => $sm->getServiceLocator()->get('Doctrine\ORM\EntityManager'));
-                $form = new Form\ProfileForm($params);
+                $form = new Form\ProfileForm('profileform', $sm->getServiceLocator()->get('translator'), $sm->getServiceLocator()->get('Doctrine\ORM\EntityManager'), array());
                 //$form->setInputFilter(new Form\ProfileFilter); //set in Controller as using Doctrine2
                 $form->setHydrator(new \Zend\Stdlib\Hydrator\ObjectProperty());
                 return $form;
             },
             'newsForm' => function($sm) {
-		$params = array('translator' => $sm->getServiceLocator()->get('translator'), 'em' => $sm->getServiceLocator()->get('Doctrine\ORM\EntityManager'));
-                $form = new Form\NewsForm($params);
+                $form = new Form\NewsForm('newsform', $sm->getServiceLocator()->get('translator'), $sm->getServiceLocator()->get('Doctrine\ORM\EntityManager'), array());
                 //$form->setInputFilter(new Form\NewsFilter); //set in Controller as using Doctrine2
                 $form->setHydrator(new \Zend\Stdlib\Hydrator\ObjectProperty());
                 return $form;

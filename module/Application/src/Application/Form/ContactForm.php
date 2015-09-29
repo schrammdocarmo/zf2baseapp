@@ -5,30 +5,14 @@ use Zend\Form\Element;
 use Zend\Form\Form;
 use Zend\Form\Element\Captcha;
 use Zend\Captcha\Image as CaptchaImage;
- 
+
 /**
   * Contact form
   *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   */ 
-class ContactForm extends Form {
+class ContactForm extends BaseForm {
 
-    protected $_translator = null;
-
-    private function translate($label) {
-        if ($this->_translator==null) return;
-        return $this->_translator->translate($label);
-    }
-
-    public function __construct($params = null)
-    {
-        if (is_array($params) && isset($params['translator'])) {
-                $this->_translator = $params['translator'];
-        }
-
-        parent::__construct('contactform');
-    }
- 
     public function init() {
 
         $this->setName('Contact');

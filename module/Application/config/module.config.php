@@ -157,11 +157,11 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController',
-            'Application\Controller\Contact' => 'Application\Controller\ContactController',
-            'Application\Controller\User' => 'Application\Controller\UserController',
-            'Application\Controller\Profile' => 'Application\Controller\ProfileController',
-            'Application\Controller\News' => 'Application\Controller\NewsController',
+            //'Application\Controller\Index' => 'Application\Controller\IndexController',
+            //'Application\Controller\Contact' => 'Application\Controller\ContactController',
+            //'Application\Controller\User' => 'Application\Controller\UserController',
+            //'Application\Controller\Profile' => 'Application\Controller\ProfileController',
+            //'Application\Controller\News' => 'Application\Controller\NewsController',
         ),
     ),
     'controller_plugins' => array(

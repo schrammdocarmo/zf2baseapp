@@ -9,31 +9,9 @@ use Zend\Form\Form;
   *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   */
-class ProfileForm extends Form {
-
-    protected $_translator = null;
-
-    protected $_em = null;
+class ProfileForm extends BaseForm {
 
 
-    private function translate($label) {
-        if ($this->_translator==null) return;
-        return $this->_translator->translate($label);
-    }
-
-    public function __construct($params = null)
-    {
-        if (is_array($params) && isset($params['translator'])) {
-                $this->_translator = $params['translator'];
-        }
-
-        if (is_array($params) && isset($params['em'])) {
-                $this->_em = $params['em'];
-        }
-
-        parent::__construct('profileform');
-    }
- 
     public function init() {
 
         $this->setName('User');
@@ -114,7 +92,7 @@ class ProfileForm extends Form {
             )
         ));
 
-	$countries = $this->_em->getRepository('Application\Entity\Country')->findAll();
+	$countries = $this->getObjectManager()->getRepository('Application\Entity\Country')->findAll();
         $countryOptions = array('' => '');
         if (is_array($countries) && sizeof($countries)>0) {
           foreach ($countries as $country) {
