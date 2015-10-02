@@ -5,17 +5,16 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
   * User
-  *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   * @ORM\Entity
   */
 class User {
 
     /**
-    * @ORM\Id
-    * @ORM\GeneratedValue(strategy="AUTO")
-    * @ORM\Column(type="integer")
-    */
+      * @ORM\Id
+      * @ORM\GeneratedValue(strategy="AUTO")
+      * @ORM\Column(type="integer")
+      */
     protected $id;
 
     /** @ORM\Column(type="string") */

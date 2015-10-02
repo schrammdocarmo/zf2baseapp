@@ -1,18 +1,21 @@
 <?php
 namespace Application\Form;
- 
+
 use Zend\Form\Element;
 use Zend\Form\Form;
 
 /**
-  * News form 
-  *
+  * News form
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   */
-class NewsForm extends BaseForm {
+class NewsForm extends BaseForm
+{
 
-
-    public function init() {
+    /**
+      * Add form elements and attributes
+      */
+    public function init()
+    {
 
         $this->setName('Contact');
         $this->setAttribute('method', 'post');
@@ -29,7 +32,7 @@ class NewsForm extends BaseForm {
                 'label' => $this->translate('Title'),
             )
         ));
- 
+
         $this->add(array(
             'name' => 'text',
             'type' => 'textarea',
@@ -40,17 +43,17 @@ class NewsForm extends BaseForm {
 
         $this->add(new Element\Csrf('security'));
 
-	$this->add(array(
+	      $this->add(array(
              'name' => 'button',
              'attributes' => array(
                 'class' => 'btn btn-large btn-default btn-news',
                  'type' => 'button',
-		 'onclick' => 'location.href="/news"',
+		             'onclick' => 'location.href="/news"',
                  'value' => $this->translate('Back'),
              ),
          ));
 
-	$this->add(array(
+	       $this->add(array(
              'name' => 'submit',
              'attributes' => array(
                 'class' => 'btn btn-large btn-primary sbmt-news',
@@ -59,7 +62,6 @@ class NewsForm extends BaseForm {
              ),
          ));
 
-
-
     }
+
 }

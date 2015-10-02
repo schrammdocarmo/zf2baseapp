@@ -4,9 +4,6 @@
     <head>
         <meta charset="utf-8">
 
-	<!-- temporary -->
-	<meta name="robots" content="noindex,nofollow">
-
         <?php echo $this->headTitle($this->translate('example.net'))->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()
@@ -20,16 +17,16 @@
                         ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
                         ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
 
-	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic|Bitter:700' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Rochester' rel='stylesheet' type='text/css'>
+      	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic|Bitter:700' rel='stylesheet' type='text/css'>
+      	<link href='http://fonts.googleapis.com/css?family=Rochester' rel='stylesheet' type='text/css'>
 
         <!-- Scripts -->
         <?php echo $this->headScript()
             ->prependFile($this->basePath() . '/js/bootstrap.min.js')
             ->prependFile($this->basePath() . '/js/jquery.min.js')
             ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
-        ; ?>
+            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',));
+        ?>
     </head>
     <body>
 
@@ -71,19 +68,18 @@
                 </div>
             </div>
         </nav>
+
         <div class="container">
-	    <div class="row">&nbsp;</div>
-	    <div class="row">&nbsp;</div>
-            <?php echo $this->content; ?>
-	    <div class="row">&nbsp;</div>
-	    <div class="row">&nbsp;</div>
+	           <div class="row">&nbsp;</div>
+	           <div class="row">&nbsp;</div>
+             <?php echo $this->content; ?>
+	           <div class="row">&nbsp;</div>
+ 	           <div class="row">&nbsp;</div>
         </div> <!-- /container -->
 
-            <footer>
-                <p>
-			&copy; 2014 - <?php echo date('Y') ?> <?php echo $this->translate('All rights reserved.') ?>
-		</p>
-            </footer>
+        <footer>
+            <p>&copy; 2014 - <?php echo date('Y') ?> <?php echo $this->translate('All rights reserved.') ?></p>
+        </footer>
 
         <?php echo $this->inlineScript() ?>
 

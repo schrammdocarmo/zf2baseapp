@@ -1,10 +1,11 @@
 <?php
 namespace Application\Entity;
+
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+
 /**
   * News
-  *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   * @ORM\Entity
   */

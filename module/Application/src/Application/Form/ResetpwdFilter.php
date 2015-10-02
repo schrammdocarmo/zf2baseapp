@@ -1,15 +1,18 @@
 <?php
 namespace Application\Form;
+
 use Zend\InputFilter\InputFilter;
 use Zend\Validator;
 
 /**
   * Reset password form filter
-  *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
-  */ 
+  */
 class ResetpwdFilter extends InputFilter {
- 
+
+    /**
+      * Add form element filters
+      */
     public function __construct($em = false) {
 
         $this->add(array(
@@ -18,32 +21,32 @@ class ResetpwdFilter extends InputFilter {
             'filters' => array(
                 array('name' => 'StripTags'),
                 array('name' => 'StringTrim'),
-	    ),
-	    'validators' => array(
-                array('name' => 'EmailAddress'),
-            )
+      	     ),
+      	     'validators' => array(
+                      array('name' => 'EmailAddress'),
+             )
         ));
- 
+
         $this->add(array(
             'name' => 'password',
             'required' => true,
             'filters' => array(
                 array('name' => 'StripTags'),
                 array('name' => 'StringTrim'),
-	    ),
-	    'validators' => array(
-                array(
-                    'name' => 'StringLength',
-                    'options' => array(
-                        'encoding' => 'UTF-8',
-                        'min' => 8,
-                        'max' => 100,
-                    ),
-                ),
-            )
+        	    ),
+        	    'validators' => array(
+                        array(
+                            'name' => 'StringLength',
+                            'options' => array(
+                                'encoding' => 'UTF-8',
+                                'min' => 8,
+                                'max' => 100,
+                            ),
+                        ),
+              )
         ));
 
-	$this->add(array(
+	      $this->add(array(
             'name' => 'password_confirmation',
             'required' => true,
             'filters' => array(

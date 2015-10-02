@@ -5,7 +5,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
   * Handle country list and properties
-  *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   * @ORM\Entity
   */

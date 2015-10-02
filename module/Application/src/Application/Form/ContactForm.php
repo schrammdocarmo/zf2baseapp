@@ -1,6 +1,6 @@
 <?php
 namespace Application\Form;
- 
+
 use Zend\Form\Element;
 use Zend\Form\Form;
 use Zend\Form\Element\Captcha;
@@ -8,12 +8,16 @@ use Zend\Captcha\Image as CaptchaImage;
 
 /**
   * Contact form
-  *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
-  */ 
-class ContactForm extends BaseForm {
+  */
+class ContactForm extends BaseForm
+{
 
-    public function init() {
+    /**
+      * Add form elements and attributes
+      */
+    public function init()
+    {
 
         $this->setName('Contact');
         $this->setAttribute('method', 'post');
@@ -25,7 +29,7 @@ class ContactForm extends BaseForm {
                 'label' => $this->translate('Company'),
             )
         ));
- 
+
         $this->add(array(
             'name' => 'first_name',
             'type' => 'text',
@@ -33,7 +37,7 @@ class ContactForm extends BaseForm {
                 'label' => $this->translate('First name'),
             )
         ));
- 
+
         $this->add(array(
             'name' => 'last_name',
             'type' => 'text',
@@ -63,7 +67,7 @@ class ContactForm extends BaseForm {
             )
         ));
 
-	$captchaImage = new CaptchaImage(  array(
+	      $captchaImage = new CaptchaImage(  array(
                 'font' => $_SERVER['DOCUMENT_ROOT'].'/fonts/arial.ttf',
                 'width' => 200,
                 'height' => 80,
@@ -81,19 +85,18 @@ class ContactForm extends BaseForm {
                 'captcha' => $captchaImage,
             ),
         ));
- 
+
         $this->add(new Element\Csrf('security'));
 
-	$this->add(array(
+	      $this->add(array(
              'name' => 'submit',
              'attributes' => array(
                 'class' => 'btn btn-large btn-primary',
                  'type' => 'submit',
                  'value' => $this->translate('Send'),
              ),
-         ));
-
-
+        ));
 
     }
+
 }

@@ -4,18 +4,17 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-  * Contact form tracking
-  *
+  * Contact form
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   * @ORM\Entity
   */
 class Contact {
 
     /**
-    * @ORM\Id
-    * @ORM\GeneratedValue(strategy="AUTO")
-    * @ORM\Column(type="integer")
-    */
+      * @ORM\Id
+      * @ORM\GeneratedValue(strategy="AUTO")
+      * @ORM\Column(type="integer")
+      */
     protected $id;
 
     /** @ORM\Column(type="text") */

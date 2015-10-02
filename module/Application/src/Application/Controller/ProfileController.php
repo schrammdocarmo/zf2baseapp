@@ -7,28 +7,24 @@ use Application\Entity\Contact;
 use Zend\Session\Container;
 use Application\Form;
 use Application\Entity\Activity;
-
 use Zend\Crypt\Password\Bcrypt;
 
 /**
   * User Profile
-  *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   */
 class ProfileController extends BaseController
 {
 
    /**
-    * Edit user Profile 
-    *
+    * Show and update user profile information
     * @return array
     */
     public function indexAction()
     {
-
-	$user = new Container('user');
-	$userId = $user->identity->getId();
-
+        //Get current user id and data from db
+      	$user = new Container('user');
+      	$userId = $user->identity->getId();
         $currentUser = $this->getObjectManager()->getRepository('Application\Entity\User')->findOneBy(array('id' => $userId));
 
         $formManager = $this->serviceLocator->get('FormElementManager');
@@ -36,12 +32,14 @@ class ProfileController extends BaseController
         $form->setInputFilter(new Form\ProfileFilter($this->getObjectManager()));
 
         $request = $this->getRequest();
-        if ($request->isPost()) {
+        if ($request->isPost())
+        {
                 $form->setData($request->getPost());
-                if ($form->isValid()) {
-
-			$currentUser->setEmail($request->getPost('email'));
-			$currentUser->setCompany($request->getPost('company'));
+                if ($form->isValid())
+                {
+                        //Update user profile information
+                  			$currentUser->setEmail($request->getPost('email'));
+                  			$currentUser->setCompany($request->getPost('company'));
                         $currentUser->setFirstName($request->getPost('first_name'));
                         $currentUser->setLastName($request->getPost('last_name'));
                         $currentUser->setAddress($request->getPost('address'));
@@ -51,12 +49,13 @@ class ProfileController extends BaseController
                         $currentUser->setPhone($request->getPost('phone'));
                         $currentUser->setLastModified(new \DateTime("now"));
 
-			$bcrypt = new Bcrypt();
+			                  $bcrypt = new Bcrypt();
                         $securePass = $bcrypt->create($request->getPost('password'));
-			$currentUser->setPassword($securePass);
+			                  $currentUser->setPassword($securePass);
 
-			$user->identity = $currentUser;
+			                  $user->identity = $currentUser;
 
+                        //Track activity
                         $activity = new Activity();
                         $activity->setUserId($userId);
                         $activity->setDescription('Updated profile');
@@ -67,33 +66,35 @@ class ProfileController extends BaseController
                         $activity->setCreated(new \DateTime("now"));
                         $this->getObjectManager()->persist($activity);
 
+                        //Store user profile information do db
                         $this->getObjectManager()->persist($currentUser);
                         $this->getObjectManager()->flush();
 
-			//REDIRECT TO PROFILE PAGE
+			                  //REDIRECT TO PROFILE PAGE
                         return $this->redirect()->toRoute('profile');
+		            }
 
-		}
+	        } else {
 
-	} else {
+              //Prepare data to fill the form
+      	      $formData = array();
+              $formData['id'] = $currentUser->getId();
+              $formData['email'] = $currentUser->getEmail();
+              $formData['company'] = $currentUser->getCompany();
+              $formData['first_name'] = $currentUser->getFirstName();
+              $formData['last_name'] = $currentUser->getLastName();
+              $formData['address'] = $currentUser->getAddress();
+              $formData['zipcode'] = $currentUser->getZipcode();
+              $formData['city'] = $currentUser->getCity();
+              $formData['country'] = $currentUser->getCountry();
+              $formData['phone'] = $currentUser->getPhone();
+              $form->setData($formData);
 
-	$formData = array();
-        $formData['id'] = $currentUser->getId();
-        $formData['email'] = $currentUser->getEmail();
-        $formData['company'] = $currentUser->getCompany();
-        $formData['first_name'] = $currentUser->getFirstName();
-        $formData['last_name'] = $currentUser->getLastName();
-        $formData['address'] = $currentUser->getAddress();
-        $formData['zipcode'] = $currentUser->getZipcode();
-        $formData['city'] = $currentUser->getCity();
-        $formData['country'] = $currentUser->getCountry();
-        $formData['phone'] = $currentUser->getPhone();
-        $form->setData($formData);
+	        }
 
-	}
-
-	return array('form'=>$form);
-
+	        return array('form'=>$form);
     }
+
+
 
 }

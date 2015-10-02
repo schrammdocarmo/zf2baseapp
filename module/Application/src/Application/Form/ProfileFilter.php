@@ -1,15 +1,20 @@
 <?php
 namespace Application\Form;
+
 use Zend\InputFilter\InputFilter;
 
 /**
   * User Profile form filter
-  *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
-  */ 
-class ProfileFilter extends InputFilter {
- 
-    public function __construct() {
+  */
+class ProfileFilter extends InputFilter
+{
+
+    /**
+      * Add form element filters
+      */
+    public function __construct()
+    {
 
         $this->add(array(
             'name' => 'company',
@@ -28,7 +33,7 @@ class ProfileFilter extends InputFilter {
                 array('name' => 'StringTrim'),
             ),
         ));
- 
+
         $this->add(array(
             'name' => 'last_name',
             'required' => true,
@@ -37,7 +42,7 @@ class ProfileFilter extends InputFilter {
                 array('name' => 'StringTrim'),
             ),
         ));
- 
+
         $this->add(array(
             'name' => 'email',
             'required' => true,
@@ -65,7 +70,7 @@ class ProfileFilter extends InputFilter {
                 ),
             )
         ));
- 
+
         $this->add(array(
             'name' => 'address',
             'required' => false,

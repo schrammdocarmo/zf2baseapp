@@ -1,14 +1,17 @@
 <?php
 namespace Application\Form;
+
 use Zend\InputFilter\InputFilter;
 
 /**
   * News form filter
-  *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
-  */ 
+  */
 class NewsFilter extends InputFilter {
- 
+
+    /**
+      * Add form element filters
+      */
     public function __construct() {
 
         $this->add(array(
@@ -39,7 +42,6 @@ class NewsFilter extends InputFilter {
             ),
         ));
 
-
-
     }
+    
 }

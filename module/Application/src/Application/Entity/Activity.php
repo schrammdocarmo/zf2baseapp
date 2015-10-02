@@ -5,7 +5,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
   * Activity tracking
-  *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   * @ORM\Entity
   */

@@ -1,18 +1,21 @@
 <?php
 namespace Application\Form;
- 
+
 use Zend\Form\Element;
 use Zend\Form\Form;
 
 /**
-  * User profile form 
-  *
+  * User profile form
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   */
-class ProfileForm extends BaseForm {
+class ProfileForm extends BaseForm
+{
 
-
-    public function init() {
+    /**
+      * Add form elements and attributes
+      */
+    public function init()
+    {
 
         $this->setName('User');
         $this->setAttribute('method', 'post');
@@ -28,7 +31,7 @@ class ProfileForm extends BaseForm {
             'options' => array(
                 'label' => $this->translate('E-Mail Address'),
             ),
-	    'validators' => array(
+	          'validators' => array(
         			array(
 			            'name' => 'EmailAddress'
         			),
@@ -50,7 +53,7 @@ class ProfileForm extends BaseForm {
                 'label' => $this->translate('Company'),
             )
         ));
- 
+
         $this->add(array(
             'name' => 'first_name',
             'type' => 'text',
@@ -58,7 +61,7 @@ class ProfileForm extends BaseForm {
                 'label' => $this->translate('First name'),
             )
         ));
- 
+
         $this->add(array(
             'name' => 'last_name',
             'type' => 'text',
@@ -92,7 +95,7 @@ class ProfileForm extends BaseForm {
             )
         ));
 
-	$countries = $this->getObjectManager()->getRepository('Application\Entity\Country')->findAll();
+	      $countries = $this->getObjectManager()->getRepository('Application\Entity\Country')->findAll();
         $countryOptions = array('' => '');
         if (is_array($countries) && sizeof($countries)>0) {
           foreach ($countries as $country) {
@@ -104,7 +107,7 @@ class ProfileForm extends BaseForm {
             'type' => 'select',
             'options' => array(
                 'label' => $this->translate('Country'),
-		'options' => $countryOptions,
+		            'options' => $countryOptions,
             )
         ));
 
@@ -118,7 +121,7 @@ class ProfileForm extends BaseForm {
 
         $this->add(new Element\Csrf('security'));
 
-	$this->add(array(
+	      $this->add(array(
              'name' => 'submit',
              'attributes' => array(
                 'class' => 'btn btn-large btn-primary',
@@ -128,6 +131,6 @@ class ProfileForm extends BaseForm {
          ));
 
 
-
     }
+
 }

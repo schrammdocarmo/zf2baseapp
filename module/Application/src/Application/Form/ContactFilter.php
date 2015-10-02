@@ -4,12 +4,16 @@ use Zend\InputFilter\InputFilter;
 
 /**
   * Contact form filter
-  *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
-  */ 
-class ContactFilter extends InputFilter {
- 
-    public function __construct() {
+  */
+class ContactFilter extends InputFilter
+{
+
+    /**
+      * Add form element filters
+      */
+    public function __construct()
+    {
 
         $this->add(array(
             'name' => 'company',
@@ -28,7 +32,7 @@ class ContactFilter extends InputFilter {
                 array('name' => 'StringTrim'),
             ),
         ));
- 
+
         $this->add(array(
             'name' => 'last_name',
             'required' => true,
@@ -37,7 +41,7 @@ class ContactFilter extends InputFilter {
                 array('name' => 'StringTrim'),
             ),
         ));
- 
+
         $this->add(array(
             'name' => 'email',
             'required' => true,
@@ -46,7 +50,7 @@ class ContactFilter extends InputFilter {
                 array('name' => 'StringTrim'),
             ),
         ));
- 
+
         $this->add(array(
             'name' => 'message',
             'required' => true,
@@ -66,7 +70,6 @@ class ContactFilter extends InputFilter {
             ),
         ));
 
-
-
     }
+
 }

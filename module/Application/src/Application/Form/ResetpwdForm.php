@@ -1,18 +1,20 @@
 <?php
 namespace Application\Form;
- 
+
 use Zend\Form\Element;
 use Zend\Form\Form;
 use Zend\Form\Element\Captcha;
 use Zend\Captcha\Image as CaptchaImage;
 
 /**
-  * Reset password form 
-  *
+  * Reset password form
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   */
 class ResetpwdForm extends BaseForm {
 
+    /**
+      * Add form elements and attributes
+      */
     public function init() {
 
         $this->setName('Login');
@@ -24,7 +26,7 @@ class ResetpwdForm extends BaseForm {
             'options' => array(
                 'label' => $this->translate('E-Mail Address'),
             ),
-	    'validators' => array(
+	          'validators' => array(
         			array(
 			            'name' => 'EmailAddress'
         			),
@@ -39,7 +41,7 @@ class ResetpwdForm extends BaseForm {
             )
         ));
 
-	$this->add(array(
+	      $this->add(array(
             'name' => 'password_confirmation',
             'type' => 'password',
             'options' => array(
@@ -57,7 +59,7 @@ class ResetpwdForm extends BaseForm {
         $captchaImage->setImgDir($_SERVER['DOCUMENT_ROOT'].'/captcha');
         $captchaImage->setImgUrl('/captcha');
 
-	$this->add(array(
+	      $this->add(array(
             'type' => 'Zend\Form\Element\Captcha',
             'name' => 'captcha',
             'options' => array(
@@ -65,10 +67,10 @@ class ResetpwdForm extends BaseForm {
                 'captcha' => $captchaImage,
             ),
         ));
- 
+
         $this->add(new Element\Csrf('security'));
 
-	$this->add(array(
+	      $this->add(array(
              'name' => 'submit',
              'attributes' => array(
                 'class' => 'btn btn-large btn-primary',
@@ -77,7 +79,6 @@ class ResetpwdForm extends BaseForm {
              ),
          ));
 
-
-
     }
+    
 }

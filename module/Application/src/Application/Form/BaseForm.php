@@ -1,23 +1,18 @@
-<?php 
+<?php
 namespace Application\Form;
- 
+
 use Zend\Form\Element;
 use Zend\Form\Form;
-
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 /**
-  * User profile form 
-  *
+  * User profile form
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   */
-class BaseForm extends Form implements ObjectManagerAwareInterface {
+class BaseForm extends Form implements ObjectManagerAwareInterface
+{
 
-    /**
-     *
-     * @var 
-     */
     private $translator = null;
 
     /**
@@ -27,7 +22,8 @@ class BaseForm extends Form implements ObjectManagerAwareInterface {
     private $objectManager;
 
 
-    public function translate($label) {
+    public function translate($label)
+    {
         return $this->getTranslator()->translate($label);
     }
 
@@ -46,20 +42,22 @@ class BaseForm extends Form implements ObjectManagerAwareInterface {
         return $this->objectManager;
     }
 
-    public function setObjectManager(ObjectManager $objectManager) {
+    public function setObjectManager(ObjectManager $objectManager)
+    {
         $this->objectManager = $objectManager;
     }
 
     public function __construct($name=null, $translator=null, $objectManager=null, $options=array())
     {
-	$this->setObjectManager($objectManager);
-	$this->setTranslator($translator);
-
+      	$this->setObjectManager($objectManager);
+      	$this->setTranslator($translator);
         parent::__construct($name, $options);
     }
 
-    public function init() {
-	parent::init();
+    public function init()
+    {
+	      parent::init();
     }
+
 
 }

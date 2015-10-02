@@ -2,13 +2,11 @@
 namespace Application\Form\Element;
 
 use Zend\Form\Element;
-
 use Zend\InputFilter\InputProviderInterface;
 use Zend\Validator\Regex as RegexValidator;
 
 /**
   * Validate phone numbers in forms
-  *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   */
 class Phone extends Element implements InputProviderInterface
@@ -20,7 +18,6 @@ class Phone extends Element implements InputProviderInterface
 
     /**
     * Get a validator if none has been set.
-    *
     * @return ValidatorInterface
     */
     public function getValidator()
@@ -38,7 +35,6 @@ class Phone extends Element implements InputProviderInterface
 
     /**
      * Sets the validator to use for this element
-     *
      * @param  ValidatorInterface $validator
      * @return Application\Form\Element\Phone
      */
@@ -50,9 +46,7 @@ class Phone extends Element implements InputProviderInterface
 
     /**
      * Provide default input rules for this element
-     *
      * Attaches a phone number validator.
-     *
      * @return array
      */
     public function getInputSpecification()
@@ -68,4 +62,5 @@ class Phone extends Element implements InputProviderInterface
             ),
         );
     }
+
 }

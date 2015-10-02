@@ -6,7 +6,6 @@ use Zend\Session\Container;
 
 /**
   * View Helper to verify if current user is logged
-  *
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   */
 class UserIsLogged extends AbstractHelper
@@ -16,15 +15,17 @@ class UserIsLogged extends AbstractHelper
     {
     }
 
-     public function __invoke()
+    public function __invoke()
     {
-	$user = new Container('user');
+        	$user = new Container('user');
 
-	if ($user->identity !== null) {
-		return true;
-	} else {
-		return false;
-	}
+        	if ($user->identity !== null)
+          {
+        		return true;
+        	} else {
+        		return false;
+        	}
+
     }
 
 }
