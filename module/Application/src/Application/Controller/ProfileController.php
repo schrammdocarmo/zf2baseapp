@@ -38,8 +38,8 @@ class ProfileController extends BaseController
                 if ($form->isValid())
                 {
                         //Update user profile information
-                  			$currentUser->setEmail($request->getPost('email'));
-                  			$currentUser->setCompany($request->getPost('company'));
+                        $currentUser->setEmail($request->getPost('email'));
+                        $currentUser->setCompany($request->getPost('company'));
                         $currentUser->setFirstName($request->getPost('first_name'));
                         $currentUser->setLastName($request->getPost('last_name'));
                         $currentUser->setAddress($request->getPost('address'));
@@ -49,11 +49,11 @@ class ProfileController extends BaseController
                         $currentUser->setPhone($request->getPost('phone'));
                         $currentUser->setLastModified(new \DateTime("now"));
 
-			                  $bcrypt = new Bcrypt();
+                        $bcrypt = new Bcrypt();
                         $securePass = $bcrypt->create($request->getPost('password'));
-			                  $currentUser->setPassword($securePass);
+                        $currentUser->setPassword($securePass);
 
-			                  $user->identity = $currentUser;
+                        $user->identity = $currentUser;
 
                         //Track activity
                         $activity = new Activity();
@@ -70,9 +70,9 @@ class ProfileController extends BaseController
                         $this->getObjectManager()->persist($currentUser);
                         $this->getObjectManager()->flush();
 
-			                  //REDIRECT TO PROFILE PAGE
+                        //REDIRECT TO PROFILE PAGE
                         return $this->redirect()->toRoute('profile');
-		            }
+                  }
 
 	        } else {
 

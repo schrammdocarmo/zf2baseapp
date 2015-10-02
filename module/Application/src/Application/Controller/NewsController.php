@@ -48,16 +48,17 @@ class NewsController extends BaseController
         $form->setInputFilter(new Form\NewsFilter($this->getObjectManager()));
 
         $request = $this->getRequest();
-        if ($request->isPost()) {
+        if ($request->isPost())
+        {
                 $form->setData($request->getPost());
-                if ($form->isValid()) {
-
+                if ($form->isValid())
+                {
                         //Update news information
-                  			$news->setTitle($request->getPost('title'));
-                  			$news->setText($request->getPost('text'));
-                                          $news->setCreated(new \DateTime("now"));
-                                          $news->setLastModified(new \DateTime("now"));
-                  			$news->setUserId($userId);
+                        $news->setTitle($request->getPost('title'));
+                        $news->setText($request->getPost('text'));
+                        $news->setCreated(new \DateTime("now"));
+                        $news->setLastModified(new \DateTime("now"));
+                        $news->setUserId($userId);
 
                         //Track activity
                         $activity = new Activity();
@@ -76,7 +77,6 @@ class NewsController extends BaseController
 
 			                  //REDIRECT TO NEWS INDEX PAGE WHEN SAVED
                         return $this->redirect()->toRoute('news');
-
 		             }
 
 	      }
@@ -119,30 +119,30 @@ class NewsController extends BaseController
       		                if ($form->isValid())
                           {
 
-                                  //Update news properties
-                        					$news->setTitle($request->getPost('title'));
-                        					$news->setText($request->getPost('text'));
-                                                		$news->setCreated(new \DateTime("now"));
-                                                		$news->setLastModified(new \DateTime("now"));
-                        					$news->setUserId($userId);
+                                //Update news properties
+                                $news->setTitle($request->getPost('title'));
+                                $news->setText($request->getPost('text'));
+                                $news->setCreated(new \DateTime("now"));
+                                $news->setLastModified(new \DateTime("now"));
+                                $news->setUserId($userId);
 
-                                  //Track activity
-      		                        $activity = new Activity();
-                      		        $activity->setUserId($userId);
-                              		$activity->setDescription('Added News');
-                              		$activity->setUri($request->getUriString());
-                              		$activity->setQuery(var_export($request->getQuery(),true));
-                              		$activity->setPost(var_export($request->getPost(),true));
-                              		$activity->setObject(var_export($currentUser,true));
-                      		        $activity->setCreated(new \DateTime("now"));
-      		                        $this->getObjectManager()->persist($activity);
+                                //Track activity
+    		                        $activity = new Activity();
+                    		        $activity->setUserId($userId);
+                            		$activity->setDescription('Added News');
+                            		$activity->setUri($request->getUriString());
+                            		$activity->setQuery(var_export($request->getQuery(),true));
+                            		$activity->setPost(var_export($request->getPost(),true));
+                            		$activity->setObject(var_export($currentUser,true));
+                    		        $activity->setCreated(new \DateTime("now"));
+    		                        $this->getObjectManager()->persist($activity);
 
-                                  //Save updated news to DB
-      		                        $this->getObjectManager()->persist($news);
-                      		        $this->getObjectManager()->flush();
+                                //Save updated news to DB
+    		                        $this->getObjectManager()->persist($news);
+                    		        $this->getObjectManager()->flush();
 
-      					                  //REDIRECT TO NEWS INDEX PAGE
-                      		        return $this->redirect()->toRoute('news');
+    					                  //REDIRECT TO NEWS INDEX PAGE
+                    		        return $this->redirect()->toRoute('news');
 
       				            }
       			      }

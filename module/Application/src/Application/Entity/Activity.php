@@ -8,7 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
   * @author Christian Schramm do Carmo <christian@schrammdocarmo.com>
   * @ORM\Entity
   */
-class Activity {
+class Activity
+{
 
     /**
     * @ORM\Id

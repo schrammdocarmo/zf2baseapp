@@ -36,7 +36,8 @@ class ContactController extends BaseController
                 $user = $session->identity;
                 if (is_object($user))
                 {
-              			     $userData = array('company' => $user->getCompany(),
+              			     $userData = array(
+                          'company' => $user->getCompany(),
               					  'first_name' => $user->getFirstName(),
               					  'last_name' => $user->getLastName(),
               					 );
